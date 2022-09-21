@@ -1,0 +1,5 @@
+
+
+var longestPalindrome = function(s) {
+    
+};
