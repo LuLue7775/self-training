@@ -22,7 +22,7 @@ var generate = function(numRows) {
     
     for( let i=1; i<numRows; i++) {
         var prevRow = triangle[i-1]
-        let curRow = [1]
+        let curRow = [1] //每列的第一個數字都是從1開始
 
         for( let j=1; j<=i; j++ ) {
             var pre = prevRow[j-1]
