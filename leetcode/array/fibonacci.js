@@ -41,3 +41,14 @@ console.log(fib(4))
       
 //  print(fibonacci(9))
 
+
+/**
+ * 經典解法：recursion
+ */
+
+const fib = (num, array = [0, 1]) => {
+    if (num<=2) return array
+    
+    const [nextToLast, last] = array.slice(-2)
+    return fib(num-1, [...array, nextToLast+last])
+}
