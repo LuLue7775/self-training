@@ -130,4 +130,145 @@ const watchList = [
     return nolanData.sum / nolanData.count ;
   }
   
-  console.log(getRating(watchList));
+//   console.log(getRating(watchList));
+
+
+/**
+ * 2. raw data to json
+ */
+
+
+const rawData = `
+    1,Donnamarie,Jemison,djemison0@ifeng.com,Female
+    2,Herculie,Chadbourne,hchadbourne1@opensource.org,Male
+    3,Shepperd,Luquet,sluquet2@so-net.ne.jp,Male
+    4,Sinclare,Nuttey,snuttey3@tmall.com,Male
+`
+
+
+/**
+ * 3. Find the maximum in an array
+ */
+
+// console.log( [3, 5, 4, 3, 6, 2, 3, 4].reduce((a, i) => Math.max(a, i), -Infinity) )
+
+const students = [
+    { name: "Kingsley", score: 70 },
+    { name: "Jack", score: 80 },
+    { name: "Joe", score: 63 },
+    { name: "Beth", score: 75 },
+    { name: "Kareem", score: 59 },
+    { name: "Sarah", score: 93 }
+]
+ 
+const max = students.reduce((acc, student) => {
+    if(acc === null || student.score > acc) 
+        return student.score
+    return acc
+}, null)
+ 
+// console.log(max)
+
+
+/**
+ * 4. Concatenating uneven arrays
+ */
+let data = [
+    ["The","red", "horse"],
+    ["Plane","over","the","ocean"],
+    ["Chocolate","ice","cream","is","awesome"], 
+    ["this","is","a","long","sentence"]
+]
+
+let dataConcat = data.map( item => item.reduce(( acc, i ) => `${acc} ${i}` )  )
+// console.log(dataConcat)
+
+/**
+ * 5. Removing duplicates in an array:
+ */
+let dupes = [1,2,3,'a','a','f',3,4,2,'d','d']
+let withoutDupes = dupes.reduce(( notDup, cur ) => {
+    if ( notDup.indexOf(cur) === -1 ) notDup.push(cur)
+    return notDup
+}, [])
+
+// console.log(withoutDupes)
+
+/**
+ * 6. Validating parenthesis
+ */
+
+ let validatedStr = [..."(())()(()())"].reduce(( a, i ) => i === '(' ? a+1 : a-1, 0)
+
+/**
+ * 7. Group by property
+ */
+
+ let obj = [
+    {name: 'Alice', job: 'Data Analyst', country: 'AU'},
+    {name: 'Bob', job: 'Pilot', country: 'US'},
+    {name: 'Lewis', job: 'Pilot', country: 'US'},
+    {name: 'Karen', job: 'Software Eng', country: 'CA'},
+    {name: 'Jona', job: 'Painter', country: 'CA'},
+    {name: 'Jeremy', job: 'Artist', country: 'SP'},
+  ]
+
+ let groupByCountry = obj.reduce(( group, curP ) => {
+    let newKey = curP['country']
+    if ( !group[newKey] ) group[newKey] = []
+    group[newKey].push(curP)
+
+    return group
+ }, [])
+
+/**
+ * 8. Flattened an array of arrays
+ * only for 1 level deep array
+ */
+
+let flattened = [[3, 4, 5], [2, 5, 3], [4, 5, 6]].reduce(( acc, singleArr ) => 
+    acc.concat(singleArr) , []
+)
+
+// [ [3, 4, 5],
+//   [2, 5, 3],
+//   [4, 5, 6]
+// ].flat()
+
+
+/**
+ * 9. Power only positive numbers
+ */
+let posPow = [-3, 4, 7, 2, 4].reduce((acc, cur) => {
+    if ( cur > 0 ) acc.push( cur**2 )
+    return acc
+}, [])
+
+/**
+ * 10. Reverse a string
+ */
+let revStr = str => [...str].reduce((acc, letter) => letter+acc )
+
+/**
+ * 11. Binary to decimal
+ * (10111)->1+(1+(1+(0+(1+0*2)*2)*2)*2)*2
+ */
+const bin2dec = str => [...String(str)].reduce((acc, cur) => +cur + acc*2, 0)
+// console.log(bin2dec('1011'))
+/**
+ * Counting Occurrences of Items in an Array Using reduce()
+ */
+
+/**
+ * Converting Between Types Using reduce() : reduce an array to any other data type.
+ */
+ const people = [
+    { name: "Kingsley", score: 70 },
+    { name: "Jack", score: 80 },
+    { name: "Joe", score: 63 },
+    { name: "Beth", score: 75 },
+    { name: "Kareem", score: 59 },
+    { name: "Sarah", score: 93 }
+]
+ 
+ const namesArray = people.reduce((acc, cur) =>  [...acc, cur.name] , [])
